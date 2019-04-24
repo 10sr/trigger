@@ -1,0 +1,13 @@
+{% load static %}
+
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}" /> -->
+
+<form action="{% url 'trigger:note_from_web_post' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="body" />
+    <input type="submit" value="trigger" />
+</form>
+
+<a href="{% url 'trigger:note_from_web' %}">This page</a>
+<a href="{% url 'trigger:index' %}">Top</a>
+

@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Do not forget to add app or django cannot find templates!
+    'trigger.apps.TriggerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
