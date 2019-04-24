@@ -1,1 +1,2 @@
 https://stackoverflow.com/questions/6244382/how-to-automate-createsuperuser-on-django
+https://jumpyoshim.hatenablog.com/entry/how-to-automate-createsuperuser-on-django
