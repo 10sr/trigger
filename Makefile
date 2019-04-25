@@ -4,6 +4,7 @@ TRIGGER_PORT ?= 8900
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
 export TRIGGER_SQLITE3
 export TRIGGER_PUSHBULLET_TOKEN
+export ADMIN_PASSWORD
 
 pipenv := pipenv
 python3 := $(pipenv) run python3
