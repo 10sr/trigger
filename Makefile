@@ -14,3 +14,6 @@ runserver:
 
 migrate:
 	$(python3) manage.py $@
+
+create_admin:
+	$(python3) manage.py $@
