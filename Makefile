@@ -12,7 +12,7 @@ pipenv := pipenv
 python3 := $(pipenv) run python3
 
 
-check: app-test black-check
+check: app-test black-check mypy
 
 
 # 0.0.0.0 is required when run inside of docker container
@@ -57,3 +57,11 @@ black:
 
 black-check:
 	${pipenv} run black --check .
+
+#########
+# mypy
+
+mypy:
+	${pipenv} run mypy --config-file .mypy.ini -p trigger -p proj -p tests
+# TODO: This really works?
+#	${poetry} run mypy --config-file .mypy.ini .
