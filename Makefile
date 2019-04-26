@@ -4,7 +4,7 @@ TRIGGER_PORT ?= 8900
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
 export TRIGGER_SQLITE3
 export TRIGGER_PUSHBULLET_TOKEN
-export ADMIN_PASSWORD
+export SUPERUSER_PASSWORD
 
 pipenv := pipenv
 python3 := $(pipenv) run python3
@@ -16,5 +16,5 @@ runserver:
 migrate:
 	$(python3) manage.py $@
 
-create_admin:
+create_superuser:
 	$(python3) manage.py $@

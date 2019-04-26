@@ -2,7 +2,7 @@ import os
 
 from django.contrib.auth.management.commands import createsuperuser
 
-# from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand, CommandError
 
 # https://stackoverflow.com/questions/6244382/how-to-automate-createsuperuser-on-django
 # https://jumpyoshim.hatenablog.com/entry/how-to-automate-createsuperuser-on-django
@@ -15,13 +15,13 @@ class Command(createsuperuser.Command):
     #     return
 
     def handle(self, *args, **kargs):
-        # TODO: Take from kargs?
-        username = "admin"
-        password = os.environ.get("ADMIN_PASSWORD", "")
+        username = kargs.get("username") or "admin"
+        password = os.environ.get("SUPERUSER_PASSWORD", "")
         email = kargs.get("email")
         database = kargs.get("database")
 
-        assert password, "Aborting: ADMIN_PASSWORD is empty"
+        if not password:
+            raise CommandError("Aborting: SUPERUSER_PASSWORD is empty")
 
         mgr = self.UserModel._default_manager.db_manager(database)
         user = mgr.filter(username=username).first()
