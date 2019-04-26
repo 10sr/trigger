@@ -12,7 +12,7 @@ pipenv := pipenv
 python3 := $(pipenv) run python3
 
 
-check: app-test black-check mypy
+check: app-test black-check mypy pyright
 
 
 # 0.0.0.0 is required when run inside of docker container
@@ -65,3 +65,10 @@ mypy:
 	${pipenv} run mypy --config-file .mypy.ini -p trigger -p proj -p tests
 # TODO: This really works?
 #	${poetry} run mypy --config-file .mypy.ini .
+
+
+###########
+# pyright
+
+pyright:
+	npm run pyright trigger proj tests
