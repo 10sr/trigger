@@ -1,7 +1,9 @@
 -include env.secret
 
+TRIGGER_ENV ?= local
 TRIGGER_PORT ?= 8900
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
+export TRIGGER_ENV
 export TRIGGER_SQLITE3
 export TRIGGER_PUSHBULLET_TOKEN
 export SUPERUSER_PASSWORD
@@ -10,7 +12,7 @@ pipenv := pipenv
 python3 := $(pipenv) run python3
 
 
-check: black-check
+check: app-test black-check
 
 
 # 0.0.0.0 is required when run inside of docker container
@@ -23,6 +25,9 @@ migrate:
 create_superuser:
 	$(python3) manage.py $@
 
+app-test:
+	${python3} manage.py makemigrations --dry-run --check
+	${python3} -Wa manage.py test
 
 
 ###########
