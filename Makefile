@@ -13,8 +13,9 @@ python3 := $(pipenv) run python3
 check: black-check
 
 
+# 0.0.0.0 is required when run inside of docker container
 runserver: create_superuser
-	$(python3) manage.py $@ $(TRIGGER_PORT)
+	$(python3) manage.py $@ 0.0.0.0:$(TRIGGER_PORT)
 
 migrate:
 	$(python3) manage.py $@
@@ -22,6 +23,24 @@ migrate:
 create_superuser:
 	$(python3) manage.py $@
 
+
+
+###########
+# Docker
+
+docker-build:
+	docker build . -t local/trigger
+
+docker-run: docker-stop
+	docker run \
+		--name trigger01 \
+		--rm \
+		-p '$(TRIGGER_PORT):$(TRIGGER_PORT)' \
+		--env-file env.secret \
+		local/trigger
+
+docker-stop:
+	docker stop trigger01 || true
 
 
 
