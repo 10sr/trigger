@@ -10,6 +10,9 @@ pipenv := pipenv
 python3 := $(pipenv) run python3
 
 
+check: black-check
+
+
 runserver: create_superuser
 	$(python3) manage.py $@ $(TRIGGER_PORT)
 
@@ -18,3 +21,15 @@ migrate:
 
 create_superuser:
 	$(python3) manage.py $@
+
+
+
+
+#########
+# black
+
+black:
+	${pipenv} run black .
+
+black-check:
+	${pipenv} run black --check .
