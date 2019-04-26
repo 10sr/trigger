@@ -24,13 +24,14 @@ class Command(createsuperuser.Command):
         assert password, "Aborting: ADMIN_PASSWORD is empty"
 
         mng = self.UserModel._default_manager.db_manager(database)
-        try:
-            user = mng.get(username=username)
+        user = mng.filter(username=username).first()
+        if user:
             self.stdout.write(f"User {username} already exists.")
             self.stdout.write(f"Updating password")
             user.set_password(password)
             user.save()
-        except mng.model.DoesNotExist:
+        else:
+            self.stdout.write(f"Creating user {username}")
             self.UserModel._default_manager.db_manager(database).create_superuser(
                 username=username, password=password, email=email
             )
