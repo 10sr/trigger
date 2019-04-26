@@ -11,8 +11,14 @@ export SUPERUSER_PASSWORD
 pipenv := pipenv
 python3 := $(pipenv) run python3
 
+npm := npm
+
 
 check: app-test black-check mypy pyright
+
+installdeps:
+	$(pipenv) install --dev
+	$(npm) install
 
 
 # 0.0.0.0 is required when run inside of docker container
