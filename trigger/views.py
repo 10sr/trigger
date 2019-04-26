@@ -6,11 +6,14 @@ from django.urls import reverse
 
 from .pushbullet import PushBullet
 
+
 def index(req):
-    return HttpResponse("""
+    return HttpResponse(
+        """
     hello
     <a href="note">note</a>
-    """)
+    """
+    )
 
 
 @login_required

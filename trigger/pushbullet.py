@@ -4,6 +4,7 @@ import pushbullet
 class PushBullet:
     _token = None
     __pushbullet = None
+
     @property
     def pushbullet(self):
         if self.__pushbullet is None:
