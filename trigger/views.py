@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.template import loader
@@ -12,11 +13,13 @@ def index(req):
     """)
 
 
+@login_required
 def note_from_web(req):
     tpl = loader.get_template("trigger/note_from_web.html.dtl")
     return HttpResponse(tpl.render({}, req))
 
 
+@login_required
 def note_from_web_post(req):
     try:
         body = req.POST["body"]

@@ -10,7 +10,7 @@ pipenv := pipenv
 python3 := $(pipenv) run python3
 
 
-runserver:
+runserver: create_superuser
 	$(python3) manage.py $@ $(TRIGGER_PORT)
 
 migrate:

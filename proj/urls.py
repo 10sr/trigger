@@ -19,6 +19,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('trigger/admin/', admin.site.urls),
+    path("trigger/", include("django.contrib.auth.urls")),
     path("trigger/", include("trigger.urls")),
     path("", RedirectView.as_view(url="trigger/")),
 ]
