@@ -1,4 +1,6 @@
 [*.json]
+
+[/.pyre_configuration]
 indent_size = 2
 
 [*.py]
