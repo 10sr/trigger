@@ -1,0 +1,9 @@
+{
+  "include": [
+    "trigger",
+    "proj",
+    "tests"
+  ],
+  "venvPath": ".venv",
+  "venv": "."
+}

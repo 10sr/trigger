@@ -77,7 +77,7 @@ mypy:
 # pyright
 
 pyright:
-	npm run pyright trigger proj tests
+	npm run -- pyright -p .
 
 
 #########
