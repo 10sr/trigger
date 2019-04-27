@@ -32,8 +32,8 @@ create_superuser:
 	$(python3) manage.py $@
 
 app-test:
-	${python3} manage.py makemigrations --dry-run --check
-	${python3} -Wa manage.py test
+	$(python3) manage.py makemigrations --dry-run --check
+	$(python3) -Wa manage.py test
 
 
 ###########
@@ -59,18 +59,18 @@ docker-stop:
 # black
 
 black:
-	${pipenv} run black .
+	$(pipenv) run black .
 
 black-check:
-	${pipenv} run black --check .
+	$(pipenv) run black --check .
 
 #########
 # mypy
 
 mypy:
-	${pipenv} run mypy --config-file .mypy.ini -p trigger -p proj -p tests
+	$(pipenv) run mypy --config-file .mypy.ini -p trigger -p proj -p tests
 # TODO: This really works?
-#	${poetry} run mypy --config-file .mypy.ini .
+#	$(poetry) run mypy --config-file .mypy.ini .
 
 
 ###########
