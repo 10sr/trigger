@@ -14,7 +14,7 @@ python3 := $(pipenv) run python3
 npm := npm
 
 
-check: app-test black-check mypy pyright pyre
+check: app-test black-check mypy pyright pyre pytype
 
 installdeps:
 	$(pipenv) install --dev
@@ -85,3 +85,10 @@ pyright:
 
 pyre:
 	$(pipenv) run pyre check
+
+
+########
+# pytype
+
+pytype:
+	$(pipenv) run pytype --config=./.pytype.cfg trigger proj tests
