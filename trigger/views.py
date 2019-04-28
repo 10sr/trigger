@@ -1,12 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect, HttpRequest
+from django.http import (
+    HttpResponse,
+    HttpResponseBadRequest,
+    HttpResponseRedirect,
+    HttpRequest,
+)
 
 from django.template import loader
 from django.urls import reverse
 
 from .pushbullet import PushBullet
-
 
 
 def index(req: HttpRequest) -> HttpResponse:
