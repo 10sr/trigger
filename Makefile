@@ -2,6 +2,8 @@
 
 TRIGGER_ENV ?= local
 TRIGGER_PORT ?= 8900
+# 0.0.0.0 is required when run inside of docker container
+TRIGGER_HOST ?= 0.0.0.0
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
 export TRIGGER_ENV
 export TRIGGER_SQLITE3
@@ -21,9 +23,8 @@ installdeps:
 	$(npm) install
 
 
-# 0.0.0.0 is required when run inside of docker container
 runserver: create_superuser
-	$(python3) manage.py $@ 0.0.0.0:$(TRIGGER_PORT)
+	$(python3) manage.py $@ "$(TRIGGER_HOST):$(TRIGGER_PORT)"
 
 migrate:
 	$(python3) manage.py $@
@@ -36,8 +37,7 @@ app-test:
 	$(python3) -Wa manage.py test
 
 
-###########
-# Docker
+# Docker ###################
 
 docker-build:
 	docker build . -t local/trigger
@@ -55,11 +55,10 @@ docker-stop:
 
 
 
-# Formatter ###############
+# Formatter ##################
 
 check-format: black-check isort-check
 
-#########
 # black
 
 black:
@@ -68,8 +67,6 @@ black:
 black-check:
 	$(pipenv) run black --check .
 
-
-#########
 # isort
 
 isort:
@@ -79,37 +76,21 @@ isort-check:
 	$(pipenv) run isort -rc trigger proj -c -vb
 
 
-# Type Checks ########
+# Type Checks #################
 
 check-type: mypy
 # check-type: mypy pyright pyre pytype
-
-
-#########
-# mypy
 
 mypy:
 	$(pipenv) run mypy --config-file .mypy.ini -p trigger -p proj -p tests
 # TODO: This really works?
 #	$(poetry) run mypy --config-file .mypy.ini .
 
-
-###########
-# pyright
-
 pyright:
 	npm run -- pyright -p .
 
-
-#########
-# pyre
-
 pyre:
 	$(pipenv) run pyre check
-
-
-########
-# pytype
 
 pytype:
 	$(pipenv) run pytype --config=./.pytype.cfg trigger proj tests
