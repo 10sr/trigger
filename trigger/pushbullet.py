@@ -6,8 +6,8 @@ from django.conf import LazySettings
 
 
 class PushBullet:
-    _token = None
-    __pushbullet: Optional[pb.Pushbullet] = None
+    _token: str
+    __pushbullet: pb.Pushbullet
 
     @property
     def pushbullet(self) -> pb.Pushbullet:
