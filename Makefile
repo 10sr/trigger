@@ -19,7 +19,7 @@ npm := npm
 check: app-test check-format check-type
 
 installdeps:
-	$(pipenv) install --dev
+	$(pipenv) install --dev --deploy
 	$(npm) install
 
 
