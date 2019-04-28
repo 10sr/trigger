@@ -76,6 +76,7 @@ isort-check:
 	$(pipenv) run isort -rc trigger proj -c -vb
 
 
+
 # Type Checks #################
 
 check-type: mypy
@@ -87,7 +88,7 @@ mypy:
 #	$(poetry) run mypy --config-file .mypy.ini .
 
 pyright:
-	npm run -- pyright -p .
+	$(npm) run -- pyright -p .
 
 pyre:
 	$(pipenv) run pyre check
