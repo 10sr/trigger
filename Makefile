@@ -14,7 +14,7 @@ python3 := $(pipenv) run python3
 npm := npm
 
 
-check: app-test black-check check-type
+check: app-test check-format check-type
 
 installdeps:
 	$(pipenv) install --dev
@@ -55,6 +55,10 @@ docker-stop:
 
 
 
+# Formatter ###############
+
+check-format: black-check isort-check
+
 #########
 # black
 
@@ -63,6 +67,16 @@ black:
 
 black-check:
 	$(pipenv) run black --check .
+
+
+#########
+# isort
+
+isort:
+	$(pipenv) run isort -rc trigger proj
+
+isort-check:
+	$(pipenv) run isort -rc trigger proj -c -vb
 
 
 # Type Checks ########

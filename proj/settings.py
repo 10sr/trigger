@@ -14,7 +14,6 @@ import os
 
 from typing import List
 
-
 # Named URL Pattern
 LOGIN_URL = "login"
 

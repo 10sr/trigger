@@ -1,8 +1,8 @@
 import os
+
 from typing import List, Mapping
 
 from django.contrib.auth.management.commands import createsuperuser
-
 from django.core.management.base import BaseCommand, CommandError
 
 # https://stackoverflow.com/questions/6244382/how-to-automate-createsuperuser-on-django
