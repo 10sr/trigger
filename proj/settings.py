@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from typing import List
+
 
 # Named URL Pattern
 LOGIN_URL = "login"
@@ -25,7 +27,7 @@ SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: List[str] = []
 
 
 # Application definition

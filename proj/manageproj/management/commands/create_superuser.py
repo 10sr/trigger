@@ -1,4 +1,5 @@
 import os
+from typing import List, Mapping
 
 from django.contrib.auth.management.commands import createsuperuser
 
@@ -8,13 +9,13 @@ from django.core.management.base import BaseCommand, CommandError
 # https://jumpyoshim.hatenablog.com/entry/how-to-automate-createsuperuser-on-django
 
 
-class Command(createsuperuser.Command):
+class Command(createsuperuser.Command):  # type: ignore   # disallow_subclassing_any
     help = "Create admin user"
 
     # def add_arguments(self, parser):
     #     return
 
-    def handle(self, *args, **kargs):
+    def handle(self, *args: List[str], **kargs: Mapping[str, str]) -> None:
         username = kargs.get("username") or "admin"
         password = os.environ.get("SUPERUSER_PASSWORD", "")
         email = kargs.get("email")
