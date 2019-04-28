@@ -14,7 +14,7 @@ python3 := $(pipenv) run python3
 npm := npm
 
 
-check: app-test black-check mypy pyright pyre pytype
+check: app-test black-check check-type
 
 installdeps:
 	$(pipenv) install --dev
@@ -63,6 +63,13 @@ black:
 
 black-check:
 	$(pipenv) run black --check .
+
+
+# Type Checks ########
+
+check-type: mypy
+# check-type: mypy pyright pyre pytype
+
 
 #########
 # mypy
