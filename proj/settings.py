@@ -14,6 +14,8 @@ import os
 
 from typing import List
 
+is_prod = os.environ.get("TRIGGER_ENV", "") == "prod"
+
 # Named URL Pattern
 LOGIN_URL = "login"
 
@@ -21,10 +23,13 @@ LOGIN_URL = "login"
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
+if is_prod:
+    SECRET_KEY = os.environ["TRIGGER_SECRET_KEY"]
+else:
+    SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not is_prod
 
 ALLOWED_HOSTS: List[str] = []
 
