@@ -24,4 +24,5 @@ class PushBullet:
         return
 
     def push_note(self, body: str, title: str = "") -> Any:
+        # TODO: Handle errors
         return self.pushbullet.push_note(title, body)

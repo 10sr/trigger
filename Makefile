@@ -31,6 +31,7 @@ runserver: create_superuser
 		--bind "$(TRIGGER_HOST):$(TRIGGER_PORT)" \
 		--workers 2 \
 		--log-level debug \
+		--reload \
 		proj.wsgi:application
 
 migrate:
