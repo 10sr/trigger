@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 black = "*"
+isort = "*"
 mypy = "*"
 pyre-check = "*"
 pytype = "*"
@@ -14,7 +15,6 @@ django = "*"
 pushbullet-py = "*"
 # [requires]
 # python_version = "3.7"
-isort = "*"
 gunicorn = "*"
 
 [pipenv]
