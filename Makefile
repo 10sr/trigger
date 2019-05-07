@@ -23,8 +23,15 @@ installdeps:
 	$(npm) install
 
 
-runserver: create_superuser
+runserver-viamanager: create_superuser
 	$(python3) manage.py $@ "$(TRIGGER_HOST):$(TRIGGER_PORT)"
+
+runserver: create_superuser
+	$(pipenv) run gunicorn \
+		--bind "$(TRIGGER_HOST):$(TRIGGER_PORT)" \
+		--workers 2 \
+		--log-level debug \
+		proj.wsgi:application
 
 migrate:
 	$(python3) manage.py $@
