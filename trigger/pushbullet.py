@@ -7,7 +7,7 @@ from django.conf import LazySettings
 
 class PushBullet:
     _token: str
-    __pushbullet: pb.Pushbullet
+    __pushbullet: Optional[pb.Pushbullet] = None
 
     @property
     def pushbullet(self) -> pb.Pushbullet:
@@ -15,7 +15,7 @@ class PushBullet:
             # pushbullet.Pushbullet sends a request on initialization,
             # so delay it
             self.__pushbullet = pb.Pushbullet(self._token)
-            assert isinstance(self.__pushbullet, pb.Pushbullet)
+        assert isinstance(self.__pushbullet, pb.Pushbullet)
         return self.__pushbullet
 
     def __init__(self, settings: LazySettings) -> None:
