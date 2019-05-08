@@ -33,6 +33,9 @@ runserver: create_superuser
 	$(pipenv) run gunicorn \
 		--bind "$(TRIGGER_HOST):$(TRIGGER_PORT)" \
 		--workers 2 \
+		--capture-output \
+		--access-logfile - \
+		--error-logfile - \
 		--log-level debug \
 		--reload \
 		proj.wsgi:application
