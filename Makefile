@@ -46,6 +46,7 @@ create_superuser:
 app-test:
 	$(python3) manage.py makemigrations --dry-run --check
 	# TODO: Fix warnings
+	# https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 	TRIGGER_ENV=prod TRIGGER_SECRET_KEY=fakekey $(python3) -Wa manage.py check --deploy
 	$(python3) -Wa manage.py test
 
