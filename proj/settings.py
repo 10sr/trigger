@@ -45,7 +45,7 @@ SECRET_KEY = _getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not is_prod
 
-ALLOWED_HOSTS: = [
+ALLOWED_HOSTS = [
     _getenv("TRIGGER_HOST", "*", is_prod)
 ]
 
