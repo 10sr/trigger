@@ -36,7 +36,6 @@ runserver: create_superuser
 		--capture-output \
 		--enable-stdio-inheritance \
 		--access-logfile - \
-		--error-logfile - \
 		--reload \
 		proj.wsgi:application
 
