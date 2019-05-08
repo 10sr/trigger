@@ -30,6 +30,7 @@ runserver-viamanager: create_superuser
 	$(python3) manage.py runserver "$(TRIGGER_HOST):$(TRIGGER_PORT)"
 
 runserver: create_superuser
+	# TODO: How to log error to stderr?
 	$(pipenv) run gunicorn \
 		--bind "$(TRIGGER_HOST):$(TRIGGER_PORT)" \
 		--workers 2 \
