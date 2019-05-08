@@ -1,12 +1,13 @@
 FROM python:3
 
-ENV PIPENV_VERSION 2018.11.26
+# Name PIPENV_VERSION is used by pipenv itself
+ENV PIPENV_VERSION_ 2018.11.26
 
 ENV TRIGGER_PORT 8900
 
 WORKDIR /root/app
 
-RUN pip3 install pipenv==$PIPENV_VERSION
+RUN pip3 install pipenv==$PIPENV_VERSION_
 
 COPY Pipfile Pipfile.lock ./
 RUN env -u PIPENV_VERSION pipenv install --deploy # --system
