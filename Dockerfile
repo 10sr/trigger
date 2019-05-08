@@ -1,15 +1,17 @@
 FROM python:3
 
+ENV SUPERUSER_PASSWORD ""
+ENV TRIGGER_PUSHBULLET_TOKEN ""
 ENV PIPENV_VERSION 2018.11.26
-ENV TRIGGER_PORT 8900
 
+ENV TRIGGER_PORT 8900
 
 WORKDIR /root/app
 
 RUN pip3 install pipenv==$PIPENV_VERSION
 
 COPY Pipfile Pipfile.lock ./
-RUN env -u PIPENV_VERSION pipenv install # --system --deploy
+RUN env -u PIPENV_VERSION pipenv install --deploy # --system
 
 COPY trigger trigger
 COPY proj proj
