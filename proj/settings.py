@@ -11,10 +11,23 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import logging
 
 from typing import List
 
-is_prod = os.environ.get("TRIGGER_ENV", "") == "prod"
+_logger = logging.getLogger(__name__)
+
+
+def _getenv(name: str, default: str = "", fatal_on_empty: bool = False) -> str:
+    val = os.environ.get(name, "")
+    if val == "" and fatal_on_empty:
+        raise KeyError(f"{name} is empty")
+    if val == "":
+        _logger.warning(f'{name} is empty, resort to default value: "{default}"')
+    return val or default
+
+
+is_prod = _getenv("TRIGGER_ENV") == "prod"
 
 # Named URL Pattern
 LOGIN_URL = "login"
@@ -23,11 +36,11 @@ LOGIN_URL = "login"
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if is_prod:
-    SECRET_KEY = os.environ["TRIGGER_SECRET_KEY"]
-else:
-    SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
-assert SECRET_KEY, "TRIGGER_SECRET_KEY must not be an empty string"
+SECRET_KEY = _getenv(
+    "TRIGGER_SECRET_KEY",
+    "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a",
+    fatal_on_empty=is_prod,
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not is_prod
@@ -86,7 +99,7 @@ WSGI_APPLICATION = "proj.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.environ["TRIGGER_SQLITE3"],
+        "NAME": _getenv("TRIGGER_SQLITE3", "db.sqlite3"),
     }
 }
 
@@ -126,4 +139,4 @@ STATIC_URL = "/static/"
 
 # trigger specific
 
-TRIGGER_PUSHBULLET_TOKEN = os.environ["TRIGGER_PUSHBULLET_TOKEN"]
+TRIGGER_PUSHBULLET_TOKEN = _getenv("TRIGGER_PUSHBULLET_TOKEN")
