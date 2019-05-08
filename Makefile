@@ -27,7 +27,7 @@ installdeps:
 
 
 runserver-viamanager: create_superuser
-	$(python3) manage.py $@ "$(TRIGGER_HOST):$(TRIGGER_PORT)"
+	$(python3) manage.py runserver "$(TRIGGER_HOST):$(TRIGGER_PORT)"
 
 runserver: create_superuser
 	$(pipenv) run gunicorn \
