@@ -10,7 +10,7 @@ TRIGGER_SECRET_KEY ?=
 export TRIGGER_ENV
 export TRIGGER_SQLITE3
 export TRIGGER_PUSHBULLET_TOKEN
-export SUPERUSER_PASSWORD
+export TRIGGER_SUPERUSER_PASSWORD
 export TRIGGER_SECRET_KEY  # Currently this variable is used only when TRIGGER_ENV == prod
 
 pipenv := pipenv

@@ -17,12 +17,12 @@ class Command(createsuperuser.Command):  # type: ignore   # disallow_subclassing
 
     def handle(self, *args: List[str], **kargs: Mapping[str, str]) -> None:
         username = kargs.get("username") or "admin"
-        password = os.environ.get("SUPERUSER_PASSWORD", "")
+        password = os.environ.get("TRIGGER_SUPERUSER_PASSWORD", "")
         email = kargs.get("email")
         database = kargs.get("database")
 
         if not password:
-            raise CommandError("Aborting: SUPERUSER_PASSWORD is empty")
+            raise CommandError("Aborting: TRIGGER_SUPERUSER_PASSWORD is empty")
 
         mgr = self.UserModel._default_manager.db_manager(database)
         user = mgr.filter(username=username).first()
