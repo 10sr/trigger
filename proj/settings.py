@@ -27,6 +27,7 @@ if is_prod:
     SECRET_KEY = os.environ["TRIGGER_SECRET_KEY"]
 else:
     SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
+assert SECRET_KEY, "TRIGGER_SECRET_KEY must not be an empty string"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not is_prod

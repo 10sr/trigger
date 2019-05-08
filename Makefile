@@ -1,14 +1,17 @@
 -include env.secret
 
+# TODO: How to make sure that ENV is actually set to prod on deployment?
 TRIGGER_ENV ?= local
 TRIGGER_PORT ?= 8900
 # 0.0.0.0 is required when run inside of docker container
 TRIGGER_HOST ?= 0.0.0.0
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
+TRIGGER_SECRET_KEY ?=
 export TRIGGER_ENV
 export TRIGGER_SQLITE3
 export TRIGGER_PUSHBULLET_TOKEN
 export SUPERUSER_PASSWORD
+export TRIGGER_SECRET_KEY  # Currently this variable is used only when TRIGGER_ENV == prod
 
 pipenv := pipenv
 python3 := $(pipenv) run python3
@@ -42,6 +45,8 @@ create_superuser:
 
 app-test:
 	$(python3) manage.py makemigrations --dry-run --check
+	# TODO: Fix warnings
+	TRIGGER_ENV=prod TRIGGER_SECRET_KEY=fakekey $(python3) -Wa manage.py check --deploy
 	$(python3) -Wa manage.py test
 
 
