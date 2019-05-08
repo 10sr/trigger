@@ -34,9 +34,9 @@ runserver: create_superuser
 		--bind "$(TRIGGER_HOST):$(TRIGGER_PORT)" \
 		--workers 2 \
 		--capture-output \
+		--enable-stdio-inheritance \
 		--access-logfile - \
 		--error-logfile - \
-		--log-level debug \
 		--reload \
 		proj.wsgi:application
 
