@@ -72,9 +72,9 @@ docker-stop:
 
 
 
-# Formatter ##################
+# Formatter and Linter ##################
 
-check-format: black-check isort-check
+check-format: black-check isort-check pydocstyle
 
 # black
 
@@ -91,6 +91,11 @@ isort:
 
 isort-check:
 	$(pipenv) run isort -rc trigger proj -c -vb
+
+# pydocstyle
+
+pydocstyle:
+	$(pipenv) run pydocstyle .
 
 
 

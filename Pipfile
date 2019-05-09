@@ -9,6 +9,7 @@ isort = "*"
 mypy = "*"
 pyre-check = "*"
 pytype = "*"
+pydocstyle = "*"
 
 [packages]
 django = "*"
