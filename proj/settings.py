@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 # TODO: Use decouple
 # TODO: Or use TOML
+# TODO: Remove default files from this file
 
 import os
 import logging
