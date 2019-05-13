@@ -31,8 +31,8 @@ def _getenv(name: str, default: str = "", fatal_on_empty: bool = False) -> str:
 
 is_prod = _getenv("TRIGGER_ENV", "prod") == "prod"
 
-# Named URL Pattern
-LOGIN_URL = "login"
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = not is_prod
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -44,12 +44,16 @@ SECRET_KEY = _getenv(
     fatal_on_empty=is_prod,
 )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not is_prod
-
 ALLOWED_HOSTS = [
     _getenv("TRIGGER_ALLOWED_HOST", "*", is_prod)
 ]
+
+
+# Named URL Pattern
+LOGIN_URL = "login"
+
+SESSION_COOKIE_NAME = "trigger_sessionid"
+SESSION_COOKIE_SECURE = is_prod
 
 
 # Application definition
@@ -101,6 +105,7 @@ WSGI_APPLICATION = "proj.wsgi.application"
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # TODO: Use dj_database_url
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": _getenv("TRIGGER_SQLITE3", "db.sqlite3"),
@@ -125,15 +130,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

@@ -9,8 +9,19 @@ Run
 ---
 
     make migrate
-    ADMIN_PASSWORD=XXX make create_admin
+    TRIGGER_SUPERUSER_PASSWORD=XXX make create_admin
     make runserver
+
+
+### Run Locally
+
+Create file like:
+
+    TRIGGER_PUSHBULLET_TOKEN=XXX
+    TRIGGER_SUPERUSER_PASSWORD=YYY
+    TRIGGER_ENV=local
+
+
 
 
 Run with Docker
