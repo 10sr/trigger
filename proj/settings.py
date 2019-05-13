@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+# TODO: Use decouple
+
 import os
 import logging
 
@@ -27,7 +29,7 @@ def _getenv(name: str, default: str = "", fatal_on_empty: bool = False) -> str:
     return val or default
 
 
-is_prod = _getenv("TRIGGER_ENV") == "prod"
+is_prod = _getenv("TRIGGER_ENV", "prod") == "prod"
 
 # Named URL Pattern
 LOGIN_URL = "login"

@@ -11,7 +11,6 @@ if sys.argv[1] == "test":
     os.environ["TRIGGER_ENV"] = "test"
     os.environ["DJANGO_SETTINGS_MODULE"] = "tests.settings"
 else:
-    os.environ.setdefault("TRIGGER_ENV", "local")
     os.environ["DJANGO_SETTINGS_MODULE"] = f"proj.settings"
 
 execute_from_command_line(sys.argv)

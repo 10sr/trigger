@@ -1,7 +1,6 @@
 -include env.secret
 
-# TODO: How to make sure that ENV is actually set to prod on deployment?
-TRIGGER_ENV ?= local
+TRIGGER_ENV ?= prod
 TRIGGER_PORT ?= 8900
 # 0.0.0.0 is required when run inside of docker container
 TRIGGER_HOST ?= 0.0.0.0
