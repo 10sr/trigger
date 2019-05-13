@@ -144,3 +144,5 @@ STATIC_URL = "/static/"
 # trigger specific
 
 TRIGGER_PUSHBULLET_TOKEN = _getenv("TRIGGER_PUSHBULLET_TOKEN")
+
+globals()["HANIHO"] = 1

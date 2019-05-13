@@ -13,6 +13,7 @@ from .pushbullet import PushBullet
 
 
 def index(req: HttpRequest) -> HttpResponse:
+    print(settings.HANIHO)
     return HttpResponse(
         """
     hello
