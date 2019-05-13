@@ -1,4 +1,4 @@
--include env.secret
+-include env.local
 
 TRIGGER_ENV ?= prod
 TRIGGER_PORT ?= 8900

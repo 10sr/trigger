@@ -1,6 +1,7 @@
 .venv/
 db.sqlite3
 *.secret
+*.local
 .mypy_cache/
 node_modules
 .pyre/
