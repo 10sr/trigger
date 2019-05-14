@@ -1,7 +1,7 @@
 -include env.local
 
 TRIGGER_ENV ?= prod
-TRIGGER_PORT ?= 8900
+TRIGGER_PORT ?= 8980
 # 0.0.0.0 is required when run inside of docker container
 TRIGGER_HOST ?= 0.0.0.0
 TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
