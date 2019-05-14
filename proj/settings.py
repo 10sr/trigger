@@ -10,14 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
 import logging
+import os
 
 from typing import List
 
+import dj_database_url
 import toml
 
-import dj_database_url
 
 class _Config:
     def __init__(self, path):
@@ -43,9 +43,7 @@ DEBUG = not is_prod
 
 SECRET_KEY = _c.SECRET_KEY
 
-ALLOWED_HOSTS = [
-    _c.ALLOWED_HOST
-]
+ALLOWED_HOSTS = [_c.ALLOWED_HOST]
 
 # Named URL Pattern
 LOGIN_URL = "login"
@@ -102,9 +100,7 @@ WSGI_APPLICATION = "proj.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    "default": dj_database_url.parse(_c.DATABASE_URL)
-}
+DATABASES = {"default": dj_database_url.parse(_c.DATABASE_URL)}
 
 
 # Password validation
