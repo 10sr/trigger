@@ -17,6 +17,7 @@ pushbullet-py = "*"
 # [requires]
 # python_version = "3.7"
 gunicorn = "*"
+toml = "*"
 
 [pipenv]
 allow_prereleases = true
