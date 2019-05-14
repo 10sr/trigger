@@ -8,19 +8,11 @@ Push bullets to pushbullet
 Run
 ---
 
+Copy `settings_local.toml` to `settings.toml` and edit that file, then
+
     make migrate
-    TRIGGER_SUPERUSER_PASSWORD=XXX make create_admin
+    make create_superuser
     make runserver
-
-
-### Run Locally
-
-Create file like:
-
-    TRIGGER_PUSHBULLET_TOKEN=XXX
-    TRIGGER_SUPERUSER_PASSWORD=YYY
-    TRIGGER_ENV=local
-
 
 
 
