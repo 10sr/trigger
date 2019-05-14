@@ -18,6 +18,7 @@ pushbullet-py = "*"
 # python_version = "3.7"
 gunicorn = "*"
 toml = "*"
+dj-database-url = "*"
 
 [pipenv]
 allow_prereleases = true

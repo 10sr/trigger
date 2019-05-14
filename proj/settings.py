@@ -17,6 +17,8 @@ from typing import List
 
 import toml
 
+import dj_database_url
+
 class _Config:
     def __init__(self, path):
         with open(path) as f:
@@ -101,11 +103,7 @@ WSGI_APPLICATION = "proj.wsgi.application"
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    # TODO: Use dj_database_url
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": _c.SQLITE3,
-    }
+    "default": dj_database_url.parse(_c.DATABASE_URL)
 }
 
 

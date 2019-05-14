@@ -3,6 +3,6 @@
 ENV = "local"
 SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
 ALLOWED_HOST = "*"
-SQLITE3 = "db.sqlite3"
+DATABASE_URL = "sqlite:///db.sqlite3"
 PUSHBULLET_TOKEN = ""
 SUPERUSER_PASSWORD = ""
