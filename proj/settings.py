@@ -140,5 +140,7 @@ STATIC_URL = "/static/"
 # trigger specific
 
 TRIGGER_PUSHBULLET_TOKEN = _c.PUSHBULLET_TOKEN
+# Is it good???
+TRIGGER_SUPERUSER_PASSWORD = _c.SUPERUSER_PASSWORD
 
 globals()["HANIHO"] = 1

@@ -1,4 +1,4 @@
--include env.local
+# -include env.local
 
 # TRIGGER_ENV ?= prod
 TRIGGER_PORT ?= 8980
@@ -6,10 +6,10 @@ TRIGGER_PORT ?= 8980
 TRIGGER_HOST ?= 0.0.0.0
 # TRIGGER_SQLITE3 ?= $(CURDIR)/db.sqlite3
 # TRIGGER_SECRET_KEY ?=
-export TRIGGER_ENV
+# export TRIGGER_ENV
 # export TRIGGER_SQLITE3
 # export TRIGGER_PUSHBULLET_TOKEN
-export TRIGGER_SUPERUSER_PASSWORD
+# export TRIGGER_SUPERUSER_PASSWORD
 # export TRIGGER_SECRET_KEY  # Currently this variable is used only when TRIGGER_ENV == prod
 
 pipenv := pipenv

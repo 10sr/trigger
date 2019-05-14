@@ -2,6 +2,7 @@ import os
 
 from typing import List, Mapping
 
+from django.conf import settings
 from django.contrib.auth.management.commands import createsuperuser
 from django.core.management.base import BaseCommand, CommandError
 
@@ -17,7 +18,7 @@ class Command(createsuperuser.Command):  # type: ignore   # disallow_subclassing
 
     def handle(self, *args: List[str], **kargs: Mapping[str, str]) -> None:
         username = kargs.get("username") or "admin"
-        password = os.environ.get("TRIGGER_SUPERUSER_PASSWORD", "")
+        password = settings.TRIGGER_SUPERUSER_PASSWORD
         email = kargs.get("email")
         database = kargs.get("database")
 
