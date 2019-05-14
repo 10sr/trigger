@@ -31,7 +31,7 @@ class _Config:
 
 _logger = logging.getLogger(__name__)
 
-_c = _Config(os.environ.get("TOML_SETTINGS_TOML", "settings.toml"))
+_c = _Config(os.environ.get("TRIGGER_SETTINGS_TOML", "settings.toml"))
 
 is_prod = _c.ENV == "prod"
 
