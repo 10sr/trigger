@@ -27,4 +27,4 @@ EXPOSE $TRIGGER_PORT
 
 # Django not work without this!
 ENV PYTHONUNBUFFERED 1
-CMD ["make", "migrate", "create_superuser", "runserver-viamanager"]
+CMD ["make", "migrate", "create_superuser", "runserver"]
