@@ -3,7 +3,11 @@ FROM python:3
 # Name PIPENV_VERSION is used by pipenv itself
 ENV PIPENV_VERSION_ 2018.11.26
 
-ENV TRIGGER_PORT 8900
+ENV TRIGGER_PORT 8980
+
+# envsubst: For templating settings.toml
+# TODO: Remove cache
+RUN apt update && apt install -y gettext
 
 WORKDIR /root/app
 
