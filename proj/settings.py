@@ -28,6 +28,12 @@ class _Config:
     def __getattr__(self, name):
         return self.toml["trigger"][name]
 
+    def get(self, name, default=None):
+        try:
+            return getattr(self, name)
+        except KeyError:
+            return default
+
 
 _logger = logging.getLogger(__name__)
 
@@ -44,6 +50,7 @@ DEBUG = not is_prod
 SECRET_KEY = _c.SECRET_KEY
 
 ALLOWED_HOSTS = [_c.ALLOWED_HOST]
+USE_X_FORWARDED_HOST = _c.get("USE_X_FORWARDED_HOST", False)
 
 # Named URL Pattern
 LOGIN_URL = "login"
