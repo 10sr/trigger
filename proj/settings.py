@@ -56,7 +56,11 @@ USE_X_FORWARDED_HOST = _c.get("USE_X_FORWARDED_HOST", False)
 LOGIN_URL = "login"
 
 SESSION_COOKIE_NAME = "trigger_sessionid"
+# TODO: Add config like IS_HTTPS?
 SESSION_COOKIE_SECURE = is_prod
+
+CSRF_COOKIE_NAME = "trigger_csrftoken"
+CSRF_COOKIE_SECURE = is_prod
 
 
 # Application definition
