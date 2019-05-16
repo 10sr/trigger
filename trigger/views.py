@@ -1,3 +1,5 @@
+from pprint import pformat
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import (
@@ -14,10 +16,14 @@ from .pushbullet import PushBullet
 
 def index(req: HttpRequest) -> HttpResponse:
     print(settings.HANIHO)
+    meta = ""
+    if req.user.is_authenticated:
+        meta = pformat(req.META)
     return HttpResponse(
-        """
+        f"""
     hello
     <a href="note">note</a>
+    <pre>{meta}</pre>
     """
     )
 
