@@ -15,7 +15,7 @@ from .pushbullet import PushBullet
 
 
 def index(req: HttpRequest) -> HttpResponse:
-    print(settings.HANIHO)
+    # print(settings.HANIHO)
     meta = ""
     if req.user.is_authenticated:
         meta = pformat(req.META)
