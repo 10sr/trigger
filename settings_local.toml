@@ -1,0 +1,9 @@
+# Do not use this in production!
+[trigger]
+ENV = "local"
+SECRET_KEY = "!aw%su!m5-j1^d+x@r5x)0_a@bx%tjrz&4)y$$n65r%e^3hc+a"
+ALLOWED_HOST = "*"
+# This is relative path, for absolute path give four slashes
+DATABASE_URL = "sqlite:///db.sqlite3"
+PUSHBULLET_TOKEN = ""
+SUPERUSER_PASSWORD = ""

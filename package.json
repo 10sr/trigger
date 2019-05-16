@@ -1,0 +1,26 @@
+{
+  "name": "trigger",
+  "version": "1.0.0",
+  "description": "trigger",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "make check",
+    "pyright": "pyright"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10sr/trigger.git"
+  },
+  "author": "10sr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/10sr/trigger/issues"
+  },
+  "homepage": "https://github.com/10sr/trigger#readme",
+  "dependencies": {
+    "pyright": "^1.0.17"
+  }
+}

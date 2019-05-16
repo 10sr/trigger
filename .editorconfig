@@ -1,0 +1,7 @@
+[*.json]
+
+[/.pyre_configuration]
+indent_size = 2
+
+[*.py]
+max_line_length = 88
