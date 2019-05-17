@@ -10,6 +10,8 @@ git:
   depth: 10
 
 install:
+  # django.core.exceptions.ImproperlyConfigured: SQLite 3.8.3 or later is required (found 3.8.2).
+  - sudo apt install sqlite3
   - python -m pip install pipenv
   - make installdeps
 
