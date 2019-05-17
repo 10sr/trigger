@@ -1,3 +1,6 @@
+---
+# django.core.exceptions.ImproperlyConfigured: SQLite 3.8.3 or later is required (found 3.8.2).
+dist: xenial
 language: python
 python:
   - 3.6
@@ -10,8 +13,6 @@ git:
   depth: 10
 
 install:
-  # django.core.exceptions.ImproperlyConfigured: SQLite 3.8.3 or later is required (found 3.8.2).
-  - sudo apt install sqlite3=3.8.3.1-1~travis1
   - python -m pip install pipenv
   - make installdeps
 
