@@ -20,4 +20,4 @@ script:
 #   - make codecov
 
 notifications:
-  email: 8slashes+travis-ci@gmail.com
+  email: 8.slashes@gmail.com
