@@ -17,7 +17,7 @@ install:
   - make installdeps
 
 script:
-  - make check
+  - make -k check
 
 # after_success:
 #   - make codecov
