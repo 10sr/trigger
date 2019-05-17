@@ -1,0 +1,7 @@
+[trigger]
+ENV = "local"  # What should this be?
+SECRET_KEY = "fake-key"
+ALLOWED_HOST = "*"
+DATABASE_URL = "sqlite:///test.sqlite3"
+PUSHBULLET_TOKEN = "a"
+SUPERUSER_PASSWORD = "b"

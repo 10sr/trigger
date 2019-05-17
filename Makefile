@@ -5,6 +5,8 @@ TRIGGER_HOST ?= 0.0.0.0
 pipenv := pipenv
 python3 := $(pipenv) run python3
 
+python3_testing := TRIGGER_SETTINGS_TOML=tests/settings.toml $(python3)
+
 npm := npm
 
 
@@ -35,11 +37,11 @@ create_superuser:
 	$(python3) manage.py $@
 
 app-test:
-	$(python3) manage.py makemigrations --dry-run --check
+	$(python3_testing) manage.py makemigrations --dry-run --check
 	# TODO: Fix warnings
 	# https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-	TRIGGER_ENV=prod TRIGGER_SECRET_KEY=fakekey $(python3) -Wa manage.py check --deploy
-	$(python3) -Wa manage.py test
+	$(python3_testing) -Wa manage.py check --deploy
+	$(python3_testing) -Wa manage.py test
 
 
 # Docker ###################
