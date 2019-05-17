@@ -5,8 +5,8 @@ Push bullets to pushbullet
 
 
 
-Run
----
+Run Locally
+-----------
 
 Copy `settings_local.toml` to `settings.toml` and edit that file, then
 
