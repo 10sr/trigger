@@ -23,7 +23,7 @@ def index(req: HttpRequest) -> HttpResponse:
         f"""
     hello
     <a href="note">note</a>
-    <pre>{meta}</pre>
+    <pre><code>{meta}</code></pre>
     """
     )
 
