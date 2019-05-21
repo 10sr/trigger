@@ -1,4 +1,5 @@
 from pprint import pformat
+import html
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -23,7 +24,7 @@ def index(req: HttpRequest) -> HttpResponse:
         f"""
     hello
     <a href="note">note</a>
-    <pre><code>{meta}</code></pre>
+    <pre><code>{html.escape(meta)}</code></pre>
     """
     )
 
