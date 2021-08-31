@@ -13,22 +13,22 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import logging
 import os
 
-from typing import List
+from typing import Any, List, Optional
 
 import dj_database_url
 import toml
 
 
 class _Config:
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         with open(path) as f:
             self.toml = toml.load(f)
         return
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         return self.toml["trigger"][name]
 
-    def get(self, name, default=None):
+    def get(self, name: str, default: Optional[Any] = None) -> Optional[Any]:
         try:
             return getattr(self, name)
         except KeyError:

@@ -18,6 +18,7 @@ darglint = "*"
 flake8-no-implicit-concat = "*"
 flake8-bandit = "*"
 hacking = "*"
+django-stub = "*"
 
 [packages]
 django = "*"

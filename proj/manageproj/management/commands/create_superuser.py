@@ -29,7 +29,7 @@ class Command(createsuperuser.Command):  # type: ignore   # disallow_subclassing
         user = mgr.filter(username=username).first()
         if user:
             self.stdout.write(f"User {username} already exists.")
-            self.stdout.write(f"Updating password")
+            self.stdout.write("Updating password")
             user.set_password(password)
             user.save()
         else:
