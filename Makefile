@@ -79,10 +79,10 @@ black-check:
 # isort
 
 isort:
-	$(pipenv) run isort -rc trigger proj
+	$(pipenv) run isort trigger proj *.py
 
 isort-check:
-	$(pipenv) run isort -rc trigger proj -c -vb
+	$(pipenv) run isort trigger proj -c -vb
 
 # pydocstyle
 
