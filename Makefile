@@ -12,6 +12,7 @@ check: app-test check-format check-type
 
 installdeps:
 	$(pipenv) install --dev --deploy
+	$(pipenv) run pip install mypy --install-types
 	$(npm) install
 
 
