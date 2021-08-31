@@ -9,13 +9,20 @@ isort = "*"
 mypy = "*"
 pyre-check = "*"
 pytype = "*"
-pydocstyle = "*"
+flake8 = "*"
+flake8-black = "*"
+flake8-isort = "*"
+flake8-docstrings = "*"
+darglint = "*"
+# pep8-naming = "*"  # Conflict with hacking
+flake8-no-implicit-concat = "*"
+flake8-bandit = "*"
+hacking = "*"
+django-stub = "*"
 
 [packages]
 django = "*"
 pushbullet-py = "*"
-# [requires]
-# python_version = "3.7"
 gunicorn = "*"
 toml = "*"
 dj-database-url = "*"

@@ -12,6 +12,7 @@ check: app-test check-format check-type
 
 installdeps:
 	$(pipenv) install --dev --deploy
+	$(pipenv) run pip install mypy --install-types
 	$(npm) install
 
 
@@ -62,28 +63,21 @@ docker-stop:
 
 # Formatter and Linter ##################
 
-check-format: black-check isort-check pydocstyle
+check-format: flake8
+
+flake8:
+	$(pipenv) run flake8 --version
+	$(pipenv) run flake8 .
 
 # black
 
 black:
 	$(pipenv) run black .
 
-black-check:
-	$(pipenv) run black --check .
-
 # isort
 
 isort:
-	$(pipenv) run isort -rc trigger proj
-
-isort-check:
-	$(pipenv) run isort -rc trigger proj -c -vb
-
-# pydocstyle
-
-pydocstyle:
-	$(pipenv) run pydocstyle .
+	$(pipenv) run isort trigger proj *.py
 
 
 
@@ -93,7 +87,7 @@ check-type: mypy
 # check-type: mypy pyright pyre pytype
 
 mypy:
-	$(pipenv) run mypy --config-file .mypy.ini -p trigger -p proj -p tests
+	$(pipenv) run mypy --strict -p trigger -p proj -p tests
 # TODO: This really works?
 #	$(poetry) run mypy --config-file .mypy.ini .
 
