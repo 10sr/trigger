@@ -62,7 +62,11 @@ docker-stop:
 
 # Formatter and Linter ##################
 
-check-format: black-check isort-check pydocstyle
+check-format: flake8 black-check isort-check pydocstyle
+
+flake8:
+	$(pipenv) run flake8 --version
+	$(pipenv) run flake8 .
 
 # black
 
@@ -93,7 +97,8 @@ check-type: mypy
 # check-type: mypy pyright pyre pytype
 
 mypy:
-	$(pipenv) run mypy --config-file .mypy.ini -p trigger -p proj -p tests
+	# $(pipenv) run mypy --config-file .mypy.ini -p trigger -p proj -p tests
+	$(pipenv) run mypy --strict -p trigger -p proj -p tests
 # TODO: This really works?
 #	$(poetry) run mypy --config-file .mypy.ini .
 
