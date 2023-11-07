@@ -6,19 +6,21 @@ verify_ssl = true
 [dev-packages]
 black = "*"
 isort = "*"
+colorama = "*"
 mypy = "*"
-pyre-check = "*"
-pytype = "*"
+# pyre-check = "*"
+# pytype = "*"
 pydocstyle = "*"
 
 [packages]
 django = "*"
 pushbullet-py = "*"
-# [requires]
-# python_version = "3.7"
 gunicorn = "*"
 toml = "*"
 dj-database-url = "*"
+
+[requires]
+python_version = "3.12"
 
 [pipenv]
 allow_prereleases = true

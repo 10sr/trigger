@@ -1,5 +1,6 @@
-from pprint import pformat
 import html
+
+from pprint import pformat
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
