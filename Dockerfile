@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.12
 
 # Name PIPENV_VERSION is used by pipenv itself
 ENV PIPENV_VERSION_ 2023.10.24
